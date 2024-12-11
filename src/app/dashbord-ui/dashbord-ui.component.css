@@ -1,0 +1,104 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d0f4c6; /* Light green */
+    height: 100vh;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .title {
+    color: #3c8031; /* Dark green */
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .circle-section {
+    width: 150px;
+    height: 150px;
+    background-color: #aad5f6; /* Light blue */
+    border-radius: 50%;
+  }
+  
+  .graphs-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+  }
+  
+  .graph {
+    height: 70px;
+    background-color: #aad5f6; /* Light blue */
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .bottom-section {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8d0d0; /* Light pink */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .account-info {
+    width: 50%;
+  }
+  
+  .account-info h3 {
+    color: #3c8031; /* Dark green */
+    margin-bottom: 10px;
+  }
+  
+  .account-info ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .account-info li {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .reject {
+    background-color: #e57373; /* Red */
+    color: #fff;
+  }
+  
+  .accept {
+    background-color: #81c784; /* Green */
+    color: #fff;
+  }
+  
+  .expand {
+    background-color: #64b5f6; /* Blue */
+    color: #fff;
+  }

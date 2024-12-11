@@ -1,0 +1,40 @@
+<div style="padding: 16px;">
+    <h2>Account Predictor</h2>
+    <table mat-table [dataSource]="predictions" class="mat-elevation-z8" style="width: 100%; margin-top: 16px;">
+      
+      <!-- User ID Column -->
+      <ng-container matColumnDef="userId">
+        <th mat-header-cell *matHeaderCellDef> User ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+      </ng-container>
+  
+      <!-- Platform Column -->
+      <ng-container matColumnDef="platform">
+        <th mat-header-cell *matHeaderCellDef> Platform </th>
+        <td mat-cell *matCellDef="let element"> {{element.platform}} </td>
+      </ng-container>
+  
+      <!-- Prediction Column -->
+      <ng-container matColumnDef="prediction">
+        <th mat-header-cell *matHeaderCellDef> Prediction </th>
+        <td mat-cell *matCellDef="let element">
+          <span [class]="element.prediction === 'Real' ? 'real' : 'fake'">
+            {{element.prediction}}
+          </span>
+        </td>
+      </ng-container>
+  
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="primary" (click)="handleAction(element.userId, 'Approve')">Get Details</button>
+         <!-- <button mat-button color="warn" (click)="handleAction(element.userId, 'Reject')">Reject</button> -->
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="['userId', 'platform', 'prediction', 'actions']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['userId', 'platform', 'prediction', 'actions'];"></tr>
+    </table>
+  </div>
+  

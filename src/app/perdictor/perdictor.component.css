@@ -1,0 +1,15 @@
+/* Styling for prediction labels */
+.real {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .fake {
+    color: red;
+    font-weight: bold;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
