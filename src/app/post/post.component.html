@@ -1,0 +1,28 @@
+<div class="table-container">
+  <h1>Back to dashboard</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Detail</th>
+        <th>Tweet</th>
+        <th>Keyword</th>
+        <th>Statement</th>
+        <th>Label Possibility</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts; let i = index">
+        <td>{{ post.detail }}</td>
+        <td>{{ post.tweet }}</td>
+        <td>{{ post.keyword }}</td>
+        <td>{{ post.statement }}</td>
+        <td>{{ post.labelPossibility }}</td>
+        <td class="action-buttons">
+          <button (click)="rejectRequest(i)" class="btn reject-btn">Reject</button>
+          <button (click)="addToPredictor(post)" class="btn add-btn">Add to Predictor</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
