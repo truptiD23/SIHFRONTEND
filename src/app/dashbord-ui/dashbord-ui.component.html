@@ -1,39 +1,60 @@
-<div class="dashboard-container">
-    <h1 class="title">Dashboard UI</h1>
-  
-    <!-- Top Section -->
-    <div class="content">
-      <!-- Left: Circle Section -->
-      <div class="circle-section"></div>
-  
-      <!-- Right: Double Graphs -->
-      <div class="graphs-section">
-        <div class="graph">Fake Account Detection</div>
-        <div class="graph">Real Account Detection</div>
-      </div>
-    </div>
-  
-    <!-- Bottom Section -->
-    <div class="bottom-section">
-      <!-- Left: Account Information -->
-      <div class="account-info">
-        <h3>Account Information</h3>
-        <ul>
-          <li>Name: John Doe</li>
-          <li>Email: johndeo2&#64;gamil.com</li>
-          <li>Status: Active</li>  
-          <li>Account Type: Verified</li>
-        </ul>
-      </div>
-  
-      <!-- Right: Buttons & Expand -->
-      <div class="actions">
-        <button class="btn reject">Reject Request</button>
-        <button class="btn accept">Add to Predictor</button>
-        <button class="btn expand">Expand</button>
-      </div>
-    </div>
+<div style="padding: 16px;">
+  <h1>Dashboard</h1>
+
+  <div style="margin-bottom: 16px; margin-right: 16px;">
+    <input
+      type="text"
+      placeholder="Search by User ID or Platform"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+      style="padding: 10px ; width: 100%;
+        margin-bottom: 20px;
+    border-radius: 50px;    
+    border: 1px solid #ddd;
+    font-size: 16px;"
+    />
   </div>
 
 
-  !
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="width: 100%; margin-bottom: 24px;">
+    <!-- User ID Column -->
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+
+    <!-- Platform Column -->
+    <ng-container matColumnDef="platform">
+      <th mat-header-cell *matHeaderCellDef> Platform </th>
+      <td mat-cell *matCellDef="let element"> {{element.platform}} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let element">
+        <!-- Reject Button -->
+         <button
+          mat-button
+          color="primary"
+          (click)="rejectRequest(element.userId)"
+          style="background-color:''; color: rgb(43, 50, 154);"
+        >
+          Reject Request
+        </button>
+        <!-- Add to Predictor Button -->
+        <button mat-button color="primary" [routerLink]="['/detail']" routerLinkActive="router-link-active">
+          Add to Predictor
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Table Header Row -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- Table Data Rows -->
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Expand Button -->
+  <button mat-raised-button color="accent">Expand</button>
+</div>

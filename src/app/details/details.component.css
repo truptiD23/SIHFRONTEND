@@ -1,0 +1,59 @@
+/* General Dashboard Style */
+.dashboard {
+    width: 80%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Search Bar */
+.search-bar {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 50px; /* Circular corners for search bar */
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+/* Button Styles */
+button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+/* Reject Request Button */
+.reject-btn {
+    background-color: #ff4d4d; /* Red */
+    color: white;
+}
+
+/* Add to Predictor Button */
+.add-btn {
+    background-color: #4caf50; /* Green */
+    color: white;
+}
+
+/* Hover Effects for Buttons */
+.reject-btn:hover {
+    background-color: #ff1a1a;
+}
+
+.add-btn:hover {
+    background-color: #45a049;
+}
