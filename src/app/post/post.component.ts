@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import * as postData from '../../../post-data.json';
+import * as postData from '../../../post.json';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router , RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-post',
   standalone:true,
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
-  imports:[CommonModule]
+  imports:[CommonModule , RouterLink]
 })
 export class PostComponent implements OnInit {
   posts: any[] = [];

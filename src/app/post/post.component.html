@@ -1,9 +1,18 @@
 <div class="table-container">
-  <h1>Back to dashboard</h1>
+  <h1>Back to Dashboard</h1>
+  <a href="/">
+    <button 
+      mat-button 
+      color="primary" 
+      routerLinkActive="router-link-active" 
+      style="background-color: #007bff; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;">
+      Back to Dashboard
+    </button>
+  </a>
   <table>
     <thead>
       <tr>
-        <th>Detail</th>
+        <!-- <th>Detail</th> -->
         <th>Tweet</th>
         <th>Keyword</th>
         <th>Statement</th>
@@ -13,7 +22,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let post of posts; let i = index">
-        <td>{{ post.detail }}</td>
+        <!-- <td>{{ post.detail }}</td> -->
         <td>{{ post.tweet }}</td>
         <td>{{ post.keyword }}</td>
         <td>{{ post.statement }}</td>

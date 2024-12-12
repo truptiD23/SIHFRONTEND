@@ -1,64 +1,55 @@
 import { Component, OnInit } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'; // For MatTable
 import { MatButtonModule } from '@angular/material/button'; // For Material buttons
 import { CommonModule } from '@angular/common'; // Needed for basic Angular directives like *ngFor 
-import { BrowserModule } from '@angular/platform-browser';
-import { PredictorComponent } from '../perdictor/perdictor.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ApiService } from '../api.service';
+import * as usersData from '../../../user.json';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashbord-ui',
-  imports: [MatTableModule, MatButtonModule, CommonModule  , RouterLink , FormsModule], 
+  imports: [MatTableModule, MatButtonModule, CommonModule, FormsModule , RouterLink], 
   standalone: true,
   templateUrl: './dashbord-ui.component.html',
-  styleUrl: './dashbord-ui.component.css'
+  styleUrls: ['./dashbord-ui.component.css']
 })
 export class DashbordUIComponent implements OnInit {
-  
-  title(title: any) {
-    throw new Error('Method not implemented.');
-  }
-  dataSource = [
-    { userId: '123', platform: 'Instagram' },
-    { userId: '456', platform: 'Twitter' },
-    { userId: '789', platform: 'Facebook' }
-  ];
-
-  // constructor(private apiservice: ApiService) {}
-  ngOnInit(): void {}
-
+  users: any[] = [];
+  searchQuery: string = ''; // For capturing the search input
+  filteredUsers: any[] = []; // Initialize as an empty array
 
   displayedColumns: string[] = ['userId', 'platform', 'actions'];
-  searchQuery: string = ''; // For capturing the search input
 
-  filteredData: any[] = [...this.dataSource]; // Initialize with all data
+  ngOnInit(): void {
+    this.users = (usersData as any).default;
+    this.filteredUsers = [...this.users]; // Initialize filteredUsers with all users
+    console.log(this.users, "this is post data");
+  }
 
   onSearch(): void {
-    if (this.searchQuery.trim() === '') {
-      this.dataSource = []; // Clear results if search query is empty
+    const query = this.searchQuery.trim().toLowerCase(); // Trim whitespace and convert to lowercase
+    if (query === '') {
+      this.filteredUsers = [...this.users]; // Reset to the full user list if the search query is empty
       return;
     }
-
-    // this.apiservice.searchUsers(this.searchQuery).subscribe(
-    //   (data) => {
-    //     this.dataSource = data;
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching data:', error);
-    //   }
-    // );
+  
+    this.filteredUsers = this.users.filter(user =>
+      user.username.toLowerCase().includes(query) // Modify this line if the property is different
+    );
   }
 
-  rejectRequest(userId: string): void {
-    console.log('Rejected request for user:', userId);
+  rejectRequest(username: string): void {
+    console.log('Reject button clicked for:', username);
+    const index = this.users.findIndex(user => user.username === username);
+    if (index !== -1) {
+      this.users.splice(index, 1);
+      console.log(`Rejected request for user: ${username}`);
+    } else {
+      console.log(`User with username ${username} not found.`);
+    }
   }
-
+  
   addToPredictor(userId: string): void {
     console.log('Added to predictor:', userId);
   }
 }
-  
-
