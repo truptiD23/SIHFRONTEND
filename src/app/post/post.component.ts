@@ -36,7 +36,7 @@ export class PostComponent implements OnInit {
   addToPredictor(post: any): void {
     const apiUrl = 'http://localhost:3000/predictor'; // Replace with your actual API URL
     this.http.post(apiUrl, post).subscribe(
-      (response) => {
+      (response) => { 
         console.log('Data successfully sent to predictor:', response);
         // Redirect to post detail page (modify the path if necessary)
         this.router.navigate(['/post-detail'], { queryParams: { id: post.keyword } });
